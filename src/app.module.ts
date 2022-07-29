@@ -5,6 +5,8 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { configLoader } from './configuration/config-loader';
 import { validate } from './configuration/config-validator';
 import { DatabaseConfig } from './configuration/contracts/database.config';
+import { PostsModule } from './modules/posts/posts.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -32,6 +34,9 @@ import { DatabaseConfig } from './configuration/contracts/database.config';
         };
       },
     }),
+
+    PostsModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

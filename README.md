@@ -33,13 +33,13 @@ $ npm run start:prod
 ### Running with Docker Compose
 ```bash
 # there is a docker-compose.dev.yml for development purposes only
-$  docker-compose -f docker-compose.dev.yml --env-file .env.dev up
+$  docker-compose -f docker-compose.dev.yml up
 
 # there is a docker-compose.test.yml for run e2e tests
-$  docker-compose -f docker-compose.test.yml --env-file .env.dev up
+$  docker-compose -f docker-compose.test.yml up
 
 # for prune purposes this command will clean all related contained, image and volume for this project only
-$ docker-compose -f docker-compose.dev.yml --env-file .env.dev down -v --rmi all
+$ docker-compose -f docker-compose.dev.yml down -v --rmi all
 ```
 
 ## Test
