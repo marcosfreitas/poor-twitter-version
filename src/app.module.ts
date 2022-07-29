@@ -1,11 +1,39 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+
+import { configLoader } from './configuration/config-loader';
+import { validate } from './configuration/config-validator';
+import { DatabaseConfig } from './configuration/contracts/database.config';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService, ConfigService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configLoader],
+      validate,
+    }),
+
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService): TypeOrmModuleOptions => {
+        const databaseConfig: DatabaseConfig =
+          config.get<DatabaseConfig>('database');
+
+        return {
+          type: 'mysql',
+          host: databaseConfig.host,
+          port: databaseConfig.port,
+          username: databaseConfig.user,
+          password: databaseConfig.password,
+          database: databaseConfig.name,
+          autoLoadEntities: true,
+        };
+      },
+    }),
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
