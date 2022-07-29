@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
-import { Logger } from '@nestjs/common';
+import { AppConfig } from './configuration/contracts/app.config';
 
 /**
  * Implements a hybrid nest application, the default way to create microservices break other configurations
@@ -15,8 +15,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get<ConfigService>(ConfigService);
 
-  const port = configService.get<number>('APP_PORT', { infer: true });
-
+  const port = configService.get<AppConfig>('application.listenPort', {
+    infer: true,
+  });
   await app.startAllMicroservices();
   await app.listen(port);
 }

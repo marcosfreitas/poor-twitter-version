@@ -11,24 +11,23 @@ services:
     ports:
       - "${APP_PORT}:${APP_PORT}"
       - "${APP_DEBUGGER_PORT}:${APP_DEBUGGER_PORT}"
+    networks:
+      - backend
+      - database
     volumes:
       - ./:/srv/posterr
-    env_file:
-      - .env.dev
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - NODE_PATH=dist/src
-      - PORT=${PORT}
-      - DB_PORT=3306
-      - DB_HOST=database
+    # environment:
+    #   - NODE_ENV=${NODE_ENV}
+    #   - NODE_PATH=dist/src
+    #   - APP_PORT=${APP_PORT}
+    #   - DB_PORT=3306
+    #   - DB_HOST=database
     command: yarn start:dev
 
   database:
     # @todo some improvement on mysql authentication method should be added
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
-    env_file:
-      - .env.dev
     environment:
       MYSQL_DATABASE: ${APP_NAME}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
