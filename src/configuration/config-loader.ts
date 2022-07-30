@@ -23,6 +23,7 @@ export const configLoader = (
       listenPort: parseInt(env.APP_PORT, 10) || 22200,
     },
     database: {
+      driver: env.DB_DRIVER,
       host: env.DB_HOST,
       port: 3306,
       name: env.APP_NAME,
