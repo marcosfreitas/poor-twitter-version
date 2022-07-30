@@ -2,6 +2,9 @@ import { IsDefined, IsNumber } from 'class-validator';
 
 export class DatabaseConfig {
   @IsDefined()
+  public readonly driver: 'mysql' | 'mariadb' | 'postgres' | 'sqlite';
+
+  @IsDefined()
   public readonly host: string;
 
   @IsDefined()
