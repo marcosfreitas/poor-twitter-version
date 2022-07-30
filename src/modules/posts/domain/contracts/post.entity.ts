@@ -1,17 +1,36 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/modules/users/domain/contracts/user.entity';
+import {
+  Column,
+  Entity,
+  Generated,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
+/**
+ * Post's model and entity definition.
+ */
 @Entity()
 export class Post {
-  @PrimaryGeneratedColumn()
-  id: number;
+  /**
+   * Defined as string because number is not compatible with bigint in postgresql
+   */
+  @PrimaryColumn({ type: 'bigint' })
+  @Generated('increment')
+  id: string;
 
   @Column()
+  @Generated('uuid')
   uuid: string;
 
-  @Column()
+  @Column({ name: 'reposted_id' })
   repostedId?: number;
 
-  @Column()
+  @ManyToOne(() => User, (user) => user.posts)
+  user: User;
+
+  @Column({ length: 777 })
   content: string;
 
   @Column({ default: new Date() })
