@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common';
 import { validateSync } from 'class-validator';
 import { configLoader } from './config-loader';
 

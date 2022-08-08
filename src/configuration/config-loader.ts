@@ -30,6 +30,9 @@ export const configLoader = (
       user: env.DB_USER,
       password: env.DB_PASSWORD,
     },
+    user: {
+      postDailyLimit: parseInt(env.POST_DAILY_LIMIT, 10) || 5,
+    },
   };
 
   return plainToInstance(GlobalConfig, configurations);

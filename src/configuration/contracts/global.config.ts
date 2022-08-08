@@ -3,6 +3,7 @@ import { IsDefined, ValidateNested } from 'class-validator';
 
 import { AppConfig } from './app.config';
 import { DatabaseConfig } from './database.config';
+import { UserConfig } from './user.config';
 
 export class GlobalConfig {
   @IsDefined()
@@ -12,4 +13,7 @@ export class GlobalConfig {
   @Type(() => DatabaseConfig)
   @IsDefined()
   public database: DatabaseConfig;
+
+  @IsDefined()
+  public user: UserConfig;
 }
