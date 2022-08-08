@@ -19,11 +19,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "typeorm-ts-node-commonjs -d ./ormconfig-datasource.ts",
-    "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d ./ormconfig-datasource.ts",
-    "migration:generate": "npm run typeorm:cli -- migration:generate -n",
-    "migration:create": "npm run typeorm:cli -- migration:create",
-    "migration:show": "npm run typeorm:cli -- migration:show"
+    "typeorm": "typeorm-ts-node-commonjs -d ./datasource.ts",
+    "db:create": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:create",
+    "db:drop": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:drop",
+    "db:seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -37,7 +36,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.7"
+    "typeorm": "^0.3.7",
+    "typeorm-extension": "^2.1.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -52,6 +52,7 @@
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "faker": "^6.6.6",
     "jest": "28.1.2",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",

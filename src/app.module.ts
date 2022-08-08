@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { config } from 'ormconfig';
-import { DataSource } from 'typeorm';
+import { config } from 'ormconfig-nest';
 
 import { configLoader } from './configuration/config-loader';
 import { validate } from './configuration/config-validator';
-import { PostsModule } from './modules/posts/posts.module';
-import { UsersModule } from './modules/users/users.module';
+import { PostsModule } from './modules/post/post.module';
+import { UsersModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -26,4 +25,12 @@ import { UsersModule } from './modules/users/users.module';
   providers: [],
   exports: [],
 })
-export class AppModule {}
+export class AppModule {
+  // @todo to be implemented
+  /*
+  async onModuleInit(): Promise<void> {
+    const dataSourceInstance = new DataSource(dataSource);
+    await dataSourceInstance.initialize();
+    await runSeeders(dataSourceInstance);
+  }*/
+}

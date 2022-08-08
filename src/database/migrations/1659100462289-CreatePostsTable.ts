@@ -31,13 +31,13 @@ export class CreatePostsTable1659100462289 implements MigrationInterface {
             generationStrategy: 'uuid',
           }),
           new TableColumn({
-            name: 'reposted_id',
+            name: 'repostedId',
             type: 'bigint',
             unsigned: true,
             isNullable: true,
           }),
           new TableColumn({
-            name: 'user_id',
+            name: 'userId',
             type: 'bigint',
             unsigned: true,
             isNullable: false,
@@ -70,7 +70,7 @@ export class CreatePostsTable1659100462289 implements MigrationInterface {
         foreignKeys: [
           new TableForeignKey({
             name: 'fk_user_id',
-            columnNames: ['user_id'],
+            columnNames: ['userId'],
             referencedTableName: 'users',
             referencedColumnNames: ['id'],
             onDelete: 'CASCADE',
