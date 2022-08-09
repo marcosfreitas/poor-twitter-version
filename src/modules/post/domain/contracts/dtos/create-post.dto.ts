@@ -13,10 +13,4 @@ export class CreatePostDto {
   @IsOptional()
   @IsUUID('4')
   public repostedUuid?: string;
-
-  constructor(userUuid: string, content: string, repostedUuid?: string) {
-    this.userUuid = userUuid;
-    this.content = content;
-    this.repostedUuid = repostedUuid;
-  }
 }

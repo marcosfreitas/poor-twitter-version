@@ -1,3 +1,6 @@
+import { User } from 'src/modules/user/domain/contracts/user.entity';
+import { Repository } from 'typeorm';
+
 import {
   BadRequestException,
   Injectable,
@@ -5,8 +8,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/modules/user/domain/contracts/user.entity';
-import { Repository } from 'typeorm';
+
 import { CreatePostDto } from '../contracts/dtos/create-post.dto';
 import { Post } from '../contracts/post.entity';
 import { PostCommand } from './post.command';

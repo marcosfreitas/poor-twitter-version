@@ -1,5 +1,6 @@
 import { User } from 'src/modules/user/domain/contracts/user.entity';
 import { Column, Entity, Generated, ManyToOne, PrimaryColumn } from 'typeorm';
+import { PostTypes } from './post-types';
 
 /**
  * Post's model and entity definition.
@@ -19,6 +20,8 @@ export class Post {
 
   @Column()
   repostedId?: string;
+
+  type?: PostTypes;
 
   @ManyToOne(() => User, (user) => user.posts)
   user: User;
