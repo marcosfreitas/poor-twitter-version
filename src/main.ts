@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { AppConfig } from './configuration/contracts/app.config';
+import { ValidationPipe } from '@nestjs/common';
 
 /**
  * Implements a hybrid nest application, the default way to create microservices break other configurations
@@ -13,6 +14,9 @@ import { AppConfig } from './configuration/contracts/app.config';
 async function bootstrap() {
   // @todo may add swagger
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(new ValidationPipe());
+
   const configService = app.get<ConfigService>(ConfigService);
 
   const port = configService.get<AppConfig>('application.listenPort', {
