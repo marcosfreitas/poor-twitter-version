@@ -1,10 +1,10 @@
-import { Post } from 'src/modules/posts/domain/contracts/post.entity';
+import { Post } from 'src/modules/post/domain/contracts/post.entity';
 import { Column, Entity, Generated, OneToMany, PrimaryColumn } from 'typeorm';
 
 /**
  * User's model and entity definition.
  */
-@Entity()
+@Entity({ name: 'users' })
 export class User {
   /**
    * Defined as string because number is not compatible with bigint in postgresql
