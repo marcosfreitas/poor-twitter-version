@@ -1,11 +1,8 @@
 import { IsDefined, IsNumber, IsPositive } from 'class-validator';
 
-/**
- * User config attributes
- */
-export class UserConfig {
+export class PaginationConfig {
   @IsDefined()
   @IsNumber()
   @IsPositive()
-  public readonly postDailyLimit: number;
+  public readonly pageSize: number;
 }
