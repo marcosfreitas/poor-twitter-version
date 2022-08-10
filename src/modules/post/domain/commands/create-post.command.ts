@@ -12,6 +12,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreatePostDto } from '../contracts/dtos/create-post.dto';
 import { Post } from '../contracts/post.entity';
 import { PostCommand } from './post.command';
+import { ExecutionResult } from 'src/shared/domain/contracts/responses/execution-result';
 
 @Injectable()
 export class CreatePostCommand extends PostCommand {
@@ -25,7 +26,7 @@ export class CreatePostCommand extends PostCommand {
     super(usersRepository, postsRepository, configService);
   }
 
-  public async execute(request: CreatePostDto): Promise<Post> {
+  public async execute(request: CreatePostDto): Promise<ExecutionResult<Post>> {
     const user = await this.usersRepository.findOne({
       where: { uuid: request.userUuid },
     });
@@ -74,6 +75,8 @@ export class CreatePostCommand extends PostCommand {
     // that the constructor of Post is defining only these 3 properties below.
     const post = new Post(user, request.content, repostedPost?.id);
 
-    return this.postsRepository.save(post);
+    const saved = await this.postsRepository.save(post);
+
+    return { data: saved };
   }
 }
