@@ -5,8 +5,8 @@ import { config } from 'ormconfig-nest';
 
 import { configLoader } from './configuration/config-loader';
 import { validate } from './configuration/config-validator';
-import { PostsModule } from './modules/post/post.module';
-import { UsersModule } from './modules/user/user.module';
+import { PostModule } from './modules/post/post.module';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -18,8 +18,8 @@ import { UsersModule } from './modules/user/user.module';
 
     TypeOrmModule.forRootAsync(config),
 
-    PostsModule,
-    UsersModule,
+    PostModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
