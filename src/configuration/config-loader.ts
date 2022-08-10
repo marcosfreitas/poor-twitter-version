@@ -33,6 +33,9 @@ export const configLoader = (
     user: {
       postDailyLimit: parseInt(env.POST_DAILY_LIMIT, 10) || 5,
     },
+    pagination: {
+      pageSize: parseInt(env.PAGE_SIZE, 10) || 10,
+    },
   };
 
   return plainToInstance(GlobalConfig, configurations);
