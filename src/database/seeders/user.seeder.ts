@@ -1,6 +1,6 @@
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 import { DataSource } from 'typeorm';
-import { User } from 'src/modules/user/domain/contracts/user.entity';
+import { User } from '@modules/user/domain/contracts/user.entity';
 
 export default class UserSeeder implements Seeder {
   public async run(

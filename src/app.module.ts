@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { config } from 'ormconfig-nest';
+import { config } from '../ormconfig-nest';
 
 import { configLoader } from './configuration/config-loader';
 import { validate } from './configuration/config-validator';
@@ -26,11 +26,7 @@ import { UserModule } from './modules/user/user.module';
   exports: [],
 })
 export class AppModule {
-  // @todo to be implemented
-  /*
-  async onModuleInit(): Promise<void> {
-    const dataSourceInstance = new DataSource(dataSource);
-    await dataSourceInstance.initialize();
-    await runSeeders(dataSourceInstance);
-  }*/
+  // const dataSourceInstance = new DataSource(dataSource);
+  // await dataSourceInstance.initialize();
+  // await runSeeders(dataSourceInstance);
 }

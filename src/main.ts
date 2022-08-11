@@ -12,7 +12,6 @@ import { ValidationPipe } from '@nestjs/common';
  * @see https://docs.nestjs.com/faq/hybrid-application
  */
 async function bootstrap() {
-  // @todo may add swagger
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe());

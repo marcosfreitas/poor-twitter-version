@@ -1,6 +1,6 @@
 import { BadRequestException } from '@nestjs/common';
-import { ListPostDto } from 'src/modules/post/domain/contracts/dtos/list-post.dto';
-import { Post } from 'src/modules/post/domain/contracts/post.entity';
+import { ListPostDto } from '@modules/post/domain/contracts/dtos/list-post.dto';
+import { Post } from '@modules/post/domain/contracts/post.entity';
 import {
   Between,
   FindOperator,
