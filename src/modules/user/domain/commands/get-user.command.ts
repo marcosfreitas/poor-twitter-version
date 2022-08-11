@@ -33,6 +33,8 @@ export class GetUserCommand {
     const joinedAt = this.formatDate(user.createdAt);
     const updatedAt = this.formatDate(user.updatedAt);
 
+    delete user.createdAt;
+
     const [data, totalPosts] = await this.postsRepository.findAndCount({
       where: {
         user: { id: user.id },
@@ -43,7 +45,7 @@ export class GetUserCommand {
     return {
       data: {
         profile: { ...user, joinedAt, updatedAt },
-        postsPublished: totalPosts,
+        publishedPosts: totalPosts,
       },
     };
   }

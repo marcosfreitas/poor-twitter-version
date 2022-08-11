@@ -47,7 +47,7 @@ const createDailyPosts = async (repository: Repository<Post>, user: User) => {
   }
 };
 
-describe('/v1/posts (GET) - when listing a posts', () => {
+describe('/v1/posts (GET) - when listing posts', () => {
   let app: INestApplication;
   let postRepository: Repository<Post>;
   let userRepository: Repository<User>;
@@ -126,15 +126,6 @@ describe('/v1/posts (GET) - when listing a posts', () => {
         .expect(HttpStatus.BAD_REQUEST);
 
       expect(response.body).toEqual(expectedResponse);
-    });
-
-    it('should return NOT_FOUND for not found user', async () => {
-      await request(app.getHttpServer())
-        .get('/v1/posts')
-        .query({
-          userUuid: randomUUID(),
-        })
-        .expect(HttpStatus.NOT_FOUND);
     });
 
     it('should return posts only for this user', async () => {
