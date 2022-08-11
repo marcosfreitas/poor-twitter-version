@@ -1,10 +1,10 @@
+
+## Marcos Vinícius Silva de Freitas
+`github profile: https://github.com/marcosfreitas`
+<br>
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+<img src="https://nestjs.com/img/logo_text.svg" width="80">
 </p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
 <p align="center">Project built with NestJS Framework.</p>
 
