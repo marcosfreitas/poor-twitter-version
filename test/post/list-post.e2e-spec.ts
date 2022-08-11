@@ -66,29 +66,28 @@ describe('/v1/posts (GET) - when listing a posts', () => {
     userRepository = app.get(getRepositoryToken(User));
 
     await app.init();
+  });
 
+  beforeEach(async () => {
     await postRepository.delete({});
     await userRepository.delete({});
 
     user = new User(randomUUID(), `User-${Math.random().toFixed(5)}`);
     await userRepository.insert(user);
-
     await createDailyPosts(postRepository, user);
   });
 
   afterAll(async () => {
-    // await postRepository.delete({});
-    // await userRepository.delete({});
+    await postRepository.delete({});
+    await userRepository.delete({});
     await app.close();
   });
 
-  describe.only('and is not using filters', () => {
+  describe('and is not using filters', () => {
     it('should return all posts with pagination', async () => {
       const response = await request(app.getHttpServer())
         .get('/v1/posts')
         .expect(HttpStatus.OK);
-
-      console.log(response.body.data);
 
       expect(response.body.data.length).toBe(4);
 

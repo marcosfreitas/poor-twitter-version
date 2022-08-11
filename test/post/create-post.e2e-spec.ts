@@ -32,6 +32,7 @@ describe('/v1/posts (POST) - when creating a posts', () => {
   beforeEach(async () => {
     await postRepository.delete({});
     await userRepository.delete({});
+
     user = new User(randomUUID(), `User-${Math.random().toFixed(5)}`);
   });
 
@@ -120,6 +121,7 @@ describe('/v1/posts (POST) - when creating a posts', () => {
       'but ther user has reached daily post limit',
     () => {
       it('should return BAD_REQUEST response with a body of user reached daily post limit', async () => {
+        await postRepository.delete({});
         await userRepository.insert(user);
 
         const posts = [
