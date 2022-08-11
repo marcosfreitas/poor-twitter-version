@@ -1,4 +1,4 @@
-import { Post } from 'src/modules/post/domain/contracts/post.entity';
+import { Post } from '@modules/post/domain/contracts/post.entity';
 import { Column, Entity, Generated, OneToMany, PrimaryColumn } from 'typeorm';
 
 /**
@@ -28,4 +28,9 @@ export class User {
 
   @Column({ default: new Date() })
   updatedAt: Date;
+
+  constructor(uuid: string, username: string) {
+    this.uuid = uuid;
+    this.username = username;
+  }
 }

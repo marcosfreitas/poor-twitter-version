@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/modules/user/domain/contracts/user.entity';
-import { PaginationCommand } from 'src/shared/domain/commands/pagination-commands';
+import { User } from '@modules/user/domain/contracts/user.entity';
+import { PaginationCommand } from '@shared/domain/commands/pagination-commands';
 import { MoreThan, Repository } from 'typeorm';
 import { PostTypes } from '../contracts/post-types';
 import { Post } from '../contracts/post.entity';

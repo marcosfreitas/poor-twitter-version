@@ -16,12 +16,6 @@ services:
       - database
     volumes:
       - ./:/srv/posterr
-    # environment:
-    #   - NODE_ENV=${NODE_ENV}
-    #   - NODE_PATH=dist/src
-    #   - APP_PORT=${APP_PORT}
-    #   - DB_PORT=3306
-    #   - DB_HOST=database
     command: yarn start:dev
 
   database:
@@ -39,7 +33,9 @@ services:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
-      #- ./.docker/sql:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    cap_add:
+      - "SYS_NICE"
     healthcheck:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
         timeout: 20s

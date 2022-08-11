@@ -1,4 +1,4 @@
-import { User } from 'src/modules/user/domain/contracts/user.entity';
+import { User } from '@modules/user/domain/contracts/user.entity';
 import { Column, Entity, Generated, ManyToOne, PrimaryColumn } from 'typeorm';
 import { PostTypes } from './post-types';
 

@@ -1,10 +1,10 @@
-import { User } from 'src/modules/user/domain/contracts/user.entity';
+import { User } from '@modules/user/domain/contracts/user.entity';
 
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Post } from 'src/modules/post/domain/contracts/post.entity';
-import { ExecutionResult } from 'src/shared/domain/contracts/responses/execution-result';
+import { Post } from '@modules/post/domain/contracts/post.entity';
+import { ExecutionResult } from '@shared/domain/contracts/responses/execution-result';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -33,6 +33,8 @@ export class GetUserCommand {
     const joinedAt = this.formatDate(user.createdAt);
     const updatedAt = this.formatDate(user.updatedAt);
 
+    delete user.createdAt;
+
     const [data, totalPosts] = await this.postsRepository.findAndCount({
       where: {
         user: { id: user.id },
@@ -43,7 +45,7 @@ export class GetUserCommand {
     return {
       data: {
         profile: { ...user, joinedAt, updatedAt },
-        postsPublished: totalPosts,
+        publishedPosts: totalPosts,
       },
     };
   }

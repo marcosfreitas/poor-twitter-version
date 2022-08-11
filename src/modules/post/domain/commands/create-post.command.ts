@@ -1,4 +1,3 @@
-import { User } from 'src/modules/user/domain/contracts/user.entity';
 import { Repository } from 'typeorm';
 
 import {
@@ -9,9 +8,11 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { CreatePostDto } from '../contracts/dtos/create-post.dto';
-import { Post } from '../contracts/post.entity';
-import { PostCommand } from './post.command';
+import { CreatePostDto } from '@modules/post/domain/contracts/dtos/create-post.dto';
+import { Post } from '@modules/post/domain/contracts/post.entity';
+import { PostCommand } from '@modules/post/domain/commands/post.command';
+import { ExecutionResult } from '@shared/domain/contracts/responses/execution-result';
+import { User } from '@modules/user/domain/contracts/user.entity';
 
 @Injectable()
 export class CreatePostCommand extends PostCommand {
@@ -25,9 +26,9 @@ export class CreatePostCommand extends PostCommand {
     super(usersRepository, postsRepository, configService);
   }
 
-  public async execute(request: CreatePostDto): Promise<Post> {
-    const user = await this.usersRepository.findOne({
-      where: { uuid: request.userUuid },
+  public async execute(request: CreatePostDto): Promise<ExecutionResult<Post>> {
+    const user = await this.usersRepository.findOneBy({
+      uuid: request.userUuid,
     });
 
     if (!user) {
@@ -46,8 +47,8 @@ export class CreatePostCommand extends PostCommand {
     let repostedPost: Post;
 
     if (request.repostedUuid) {
-      repostedPost = await this.postsRepository.findOne({
-        where: { uuid: request.repostedUuid },
+      repostedPost = await this.postsRepository.findOneBy({
+        uuid: request.repostedUuid,
       });
 
       if (!repostedPost) {
@@ -69,11 +70,17 @@ export class CreatePostCommand extends PostCommand {
       }
     }
 
+    if (!request.content && !repostedPost) {
+      throw new BadRequestException(`You can't create a post without content.`);
+    }
+
     // The mass assignment vulnerability isn't possible here.
     // So, updating existent record isn't possible due to the fact
     // that the constructor of Post is defining only these 3 properties below.
     const post = new Post(user, request.content, repostedPost?.id);
 
-    return this.postsRepository.save(post);
+    const saved = await this.postsRepository.save(post);
+
+    return { data: saved };
   }
 }

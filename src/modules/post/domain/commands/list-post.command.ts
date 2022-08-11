@@ -1,5 +1,5 @@
-import { User } from 'src/modules/user/domain/contracts/user.entity';
-import { PaginatedResult } from 'src/shared/domain/contracts/pagination/paginated-result';
+import { User } from '@modules/user/domain/contracts/user.entity';
+import { PaginatedResult } from '@shared/domain/contracts/pagination/paginated-result';
 import { FindManyOptions, FindOptionsWhere, Repository } from 'typeorm';
 
 import {
