@@ -105,7 +105,7 @@ $ yarn test:cov
 
 #### Available Endpoints
 
-[Here is a Postman collection](https://go.postman.co/workspace/Team-Workspace~e6da97f7-49a1-4842-8cdc-1f57a2a70ca2/collection/8697812-14791291-2263-4920-bafa-829f49fb7369?action=share&creator=8697812) that can help you to consume the available REST endpoints:
+[Here is a Postman collection](https://www.postman.com/speeding-eclipse-658927/workspace/public-workspace/request/8697812-9ed08f63-0e7f-4617-8e1d-6b059aa43031) that can help you to consume the available REST endpoints:
 
 - [x] `(POST) /v1/posts`
 - [x] `(GET) /v1/posts`
