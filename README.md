@@ -1,6 +1,3 @@
-
-## Marcos Vinícius Silva de Freitas
-`github profile: https://github.com/marcosfreitas`
 <br>
 <p align="center">
 <img src="https://nestjs.com/img/logo_text.svg" width="80">
@@ -9,7 +6,7 @@
 <p align="center">Project built with NestJS Framework.</p>
 
 ## Description
-This project implements a new social media application called Posterr. Posterr is very similar to Twitter, but it has far fewer features:
+This project implements a new social media application. it's very similar to Twitter, but it has far fewer features:
 - [x] Post creation: for posting, reposting and quoting a post;
 - [x] Post listing, with or without filters: by user, date range, page, quantity to be retrivied
 - [X] User profile details listing
