@@ -83,7 +83,7 @@ Access the database with the credentials provided at the `.env` file.
 As host use `localhost:3306` to access the docker container externally
 
 ```sql
-  INSERT INTO POSTERR.users (id, uuid, username, createdAt, updatedAt) VALUES(NULL, '46012ff7-f552-438f-9017-7041d6bc7ada', 'gunter01', NULL, NULL);
+  INSERT INTO POOR_TWITTER.users (id, uuid, username, createdAt, updatedAt) VALUES(NULL, '46012ff7-f552-438f-9017-7041d6bc7ada', 'gunter01', NULL, NULL);
 ```
 
 ## Testing
