@@ -77,7 +77,7 @@ Path to migration files:
 
 - [x] Shows data about the user (**Atended by the user listing endpoint**):
     - [x] Username
-    - [x] Date joined Posterr, formatted as such: "March 25, 2021"
+    - [x] Date joined at the platform, formatted as such: "March 25, 2021"
     - [x] Count of number of posts the user has made (including reposts and quote posts)
 - [x] Shows a feed of the posts the user has made (including reposts and quote posts), starting with the latest 5 posts. Older posts are loaded on-demand when the user clicks on a button at the bottom of the page labeled "show more". **Atended by the post listing endpoint**
 - [x] New posts can be written from this page: for this assessment, when writing a post from the profile screen, the profile user should be set as the author of the new content. **Posts can be written form any page, just pass the logged User uuid**.
