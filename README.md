@@ -19,7 +19,7 @@ Create a file `.env` file at the project's root and define these environment var
 
 
 ```diff
-+ APP_NAME=POSTERR <- this will be the name of the database
++ APP_NAME=POOR-TWITTER <- this will be the name of the database
 
 NODE_ENV=dev
 APP_VERSION=1.0.0
