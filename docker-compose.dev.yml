@@ -15,7 +15,7 @@ services:
       - backend
       - database
     volumes:
-      - ./:/srv/posterr
+      - ./:/srv/poor-twitter
     command: yarn start:dev
 
   database:

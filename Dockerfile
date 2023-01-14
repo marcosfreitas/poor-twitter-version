@@ -14,7 +14,7 @@ FROM node:16.16.0 AS runtime
 
 ARG CACHEBUST=1
 
-ARG SRV_DIR=/srv/posterr
+ARG SRV_DIR=/srv/poor-twitter
 WORKDIR $SRV_DIR
 
 ARG NODE_AUTH_TOKEN
